@@ -13,5 +13,48 @@ namespace _2021MidSample
 		{
 
 		}
-	}
+
+        protected void ddl_Place_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddl_Area_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddl_Place.Items.Clear();
+            if (ddl_Area.SelectedValue == "北區")
+            {
+                ddl_Place.Items.Add(new ListItem("基隆", "基隆"));
+                ddl_Place.Items.Add(new ListItem("台北", "台北"));
+                ddl_Place.Items.Add(new ListItem("新北", "新北"));
+            }
+            else if (ddl_Area.SelectedValue == "中區")
+            {
+                ddl_Place.Items.Add(new ListItem("苗栗", "苗栗"));
+                ddl_Place.Items.Add(new ListItem("台中", "台中"));
+                ddl_Place.Items.Add(new ListItem("南投", "南投"));
+            }
+        }
+
+        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton1.Checked == true)
+            {
+                tb_Des.Visible = false;
+            }
+        }
+
+        protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadioButton2.Checked == true)
+            {
+                tb_Des.Visible = true;
+            }
+        }
+
+        protected void btn_Sub_Click(object sender, EventArgs e)
+        {
+            lb_Msg.Text = ddl_Area.Text + "<br />" + ddl_Place.Text + "<br />" + tb_Name.Text + "<br />" + tb_Des.Text;
+        }
+    }
 }
